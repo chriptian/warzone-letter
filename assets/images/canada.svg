@@ -1,0 +1,15 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="caGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" style="stop-color:#FF0000;stop-opacity:1" />
+    <stop offset="25%" style="stop-color:#FF0000;stop-opacity:1" />
+    <stop offset="25%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="75%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="75%" style="stop-color:#FF0000;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#FF0000;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M 288.7,183.3 L 301.6,187.9 L 314.1,187.0 L 329.3,182.5 L 336.3,193.1 L 313.2,198.4 L 305.2,207.5 L 287.5,216.9 L 267.7,231.5 L 277.3,243.1 L 301.5,250.1 L 317.0,256.1 L 331.8,266.5 L 349.9,270.2 L 351.8,257.0 L 356.6,242.0 L 352.4,220.1 L 370.1,220.9 L 387.0,226.2 L 397.7,237.4 L 418.4,232.7 L 438.1,247.6 L 447.5,256.6 L 465.0,264.6 L 460.0,276.0 L 436.5,282.9 L 408.2,285.8 L 388.4,299.6 L 419.4,287.2 L 422.4,302.6 L 442.6,298.7 L 428.6,310.6 L 413.7,311.7 L 408.7,308.2 L 399.6,297.8 L 392.5,304.3 L 386.3,308.9 L 361.3,313.6 L 354.3,316.0 L 348.3,319.4 L 330.2,326.0 L 326.6,324.5 L 331.8,316.3 L 324.3,304.8 L 321.8,302.4 L 319.4,301.1 L 313.8,297.6 L 295.2,293.5 L 278.1,291.3 L 267.7,289.3 L 254.4,288.4 L 204.0,288.4 L 152.8,288.4 L 112.4,283.4 L 96.6,274.5 L 83.7,261.3 L 77.6,249.7 L 64.4,237.9 L 48.1,237.7 L 35.0,230.6 L 39.6,183.5 L 63.7,182.7 L 87.4,179.8 L 99.4,178.8 L 121.9,183.0 L 137.9,183.9 L 168.9,189.0 L 184.8,192.0 L 195.0,189.4 L 212.8,188.1 L 232.7,192.8 L 252.1,188.0 L 267.4,190.7 L 258.3,180.3 L 276.7,174.0 L 288.7,183.3 Z"
+        fill="url(#caGrad)" stroke="#333" stroke-width="2" opacity="0.95"/>
+  <text x="288" y="249" font-size="52" font-weight="bold" text-anchor="middle" fill="#333" opacity="0.6">CA</text>
+</svg>

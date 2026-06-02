@@ -1,0 +1,13 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="idGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#CE1126;stop-opacity:1" />
+    <stop offset="50%" style="stop-color:#CE1126;stop-opacity:1" />
+    <stop offset="50%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M 443.8,464.2 L 401.9,465.0 L 370.0,433.3 L 321.3,402.4 L 305.1,379.4 L 276.4,348.6 L 257.6,320.2 L 228.8,267.2 L 195.6,235.6 L 184.4,203.0 L 170.5,173.5 L 136.3,149.6 L 116.5,117.2 L 88.0,96.0 L 48.5,54.3 L 45.2,35.0 L 69.6,36.5 L 128.2,43.8 L 161.7,80.9 L 191.0,106.6 L 211.9,122.3 L 247.8,163.0 L 286.3,163.6 L 318.1,189.6 L 340.0,221.3 L 368.8,238.6 L 353.7,269.5 L 375.4,282.7 L 389.0,283.6 L 395.4,310.1 L 408.6,331.2 L 436.4,334.5 L 454.8,358.5 L 445.3,405.6 L 443.8,464.2 Z"
+        fill="url(#idGrad)" stroke="#333" stroke-width="2" opacity="0.95"/>
+  <text x="275" y="244" font-size="52" font-weight="bold" text-anchor="middle" fill="#333" opacity="0.6">ID</text>
+</svg>

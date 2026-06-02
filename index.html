@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <title>Client</title>
+    <base href="/warzone-letter/" />
+    <link rel="preload" id="webassembly" />
+    <link rel="stylesheet" href="lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/app.css" />
+    <link rel="icon" type="image/png" href="favicon.png" />
+    <link href="Client.styles.css" rel="stylesheet" />
+    <script type="importmap">
+    {
+        "imports": {
+            "@microsoft/blazor": "_framework/blazor.webassembly.js"
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <div id="app">
+        <svg class="loading-progress">
+            <circle r="40%" cx="50%" cy="50%" />
+            <circle r="40%" cx="50%" cy="50%" />
+        </svg>
+        <div class="loading-progress-text"></div>
+    </div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="." class="reload">Reload</a>
+        <span class="dismiss">🗙</span>
+    </div>
+    <script src="_framework/blazor.webassembly.js"></script>
+    <script>
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+
+        const resume = fn => audioContext.state === 'suspended'
+            ? audioContext.resume().then(fn)
+            : fn();
+
+        // Ruido blanco filtrado — base para impactos y efectos táctiles
+        const noise = (duration, filterFreq, filterQ, gainPeak) => {
+            const t = audioContext.currentTime;
+            const samples = audioContext.sampleRate * duration;
+            const buf = audioContext.createBuffer(1, samples, audioContext.sampleRate);
+            const data = buf.getChannelData(0);
+            for (let i = 0; i < samples; i++) data[i] = Math.random() * 2 - 1;
+
+            const src = audioContext.createBufferSource();
+            src.buffer = buf;
+
+            const filter = audioContext.createBiquadFilter();
+            filter.type = 'bandpass';
+            filter.frequency.setValueAtTime(filterFreq, t);
+            filter.Q.setValueAtTime(filterQ, t);
+
+            const gain = audioContext.createGain();
+            gain.gain.setValueAtTime(gainPeak, t);
+            gain.gain.exponentialRampToValueAtTime(0.001, t + duration);
+
+            src.connect(filter);
+            filter.connect(gain);
+            gain.connect(audioContext.destination);
+            src.start(t);
+            src.stop(t + duration);
+        };
+
+        const tone = (freq, startTime, duration, type, gainPeak, pitchEnd) => {
+            const osc = audioContext.createOscillator();
+            const gain = audioContext.createGain();
+            osc.type = type;
+            osc.frequency.setValueAtTime(freq, startTime);
+            if (pitchEnd) osc.frequency.exponentialRampToValueAtTime(pitchEnd, startTime + duration);
+            gain.gain.setValueAtTime(gainPeak, startTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, startTime + duration);
+            osc.connect(gain);
+            gain.connect(audioContext.destination);
+            osc.start(startTime);
+            osc.stop(startTime + duration);
+        };
+
+        // Disparo de francotirador: crack agudo + boom grave + cuerpo medio
+        window.playHitSound = () => resume(() => {
+            const t = audioContext.currentTime;
+
+            // Crack muzzle — ruido de alta frecuencia de ataque instantáneo
+            const crackLen = Math.floor(audioContext.sampleRate * 0.06);
+            const crackBuf = audioContext.createBuffer(1, crackLen, audioContext.sampleRate);
+            const cd = crackBuf.getChannelData(0);
+            for (let i = 0; i < crackLen; i++) cd[i] = (Math.random() * 2 - 1) * (1 - i / crackLen);
+            const crack = audioContext.createBufferSource();
+            crack.buffer = crackBuf;
+            const crackHp = audioContext.createBiquadFilter();
+            crackHp.type = 'highpass';
+            crackHp.frequency.value = 2800;
+            const crackG = audioContext.createGain();
+            crackG.gain.setValueAtTime(2.8, t);
+            crackG.gain.exponentialRampToValueAtTime(0.001, t + 0.09);
+            crack.connect(crackHp); crackHp.connect(crackG); crackG.connect(audioContext.destination);
+            crack.start(t);
+
+            // Boom grave — oscilador que cae de 180Hz a 35Hz
+            const boom = audioContext.createOscillator();
+            const boomG = audioContext.createGain();
+            boom.type = 'sine';
+            boom.frequency.setValueAtTime(180, t);
+            boom.frequency.exponentialRampToValueAtTime(35, t + 0.32);
+            boomG.gain.setValueAtTime(0.85, t);
+            boomG.gain.exponentialRampToValueAtTime(0.001, t + 0.42);
+            boom.connect(boomG); boomG.connect(audioContext.destination);
+            boom.start(t); boom.stop(t + 0.42);
+
+            // Cuerpo medio — grosor del disparo
+            const bodyLen = Math.floor(audioContext.sampleRate * 0.18);
+            const bodyBuf = audioContext.createBuffer(1, bodyLen, audioContext.sampleRate);
+            const bd = bodyBuf.getChannelData(0);
+            for (let i = 0; i < bodyLen; i++) bd[i] = (Math.random() * 2 - 1) * Math.exp(-i * 18 / audioContext.sampleRate);
+            const body = audioContext.createBufferSource();
+            body.buffer = bodyBuf;
+            const bodyBp = audioContext.createBiquadFilter();
+            bodyBp.type = 'bandpass'; bodyBp.frequency.value = 700; bodyBp.Q.value = 1.2;
+            const bodyG = audioContext.createGain();
+            bodyG.gain.setValueAtTime(0.55, t);
+            bodyG.gain.exponentialRampToValueAtTime(0.001, t + 0.2);
+            body.connect(bodyBp); bodyBp.connect(bodyG); bodyG.connect(audioContext.destination);
+            body.start(t);
+        });
+
+        // Fuego amigo: dos pitidos de alarma cortos — señal de error táctico
+        window.playFriendlySound = () => resume(() => {
+            const t = audioContext.currentTime;
+            tone(523, t,        0.12, 'square', 0.25);
+            tone(415, t + 0.15, 0.12, 'square', 0.25);
+            tone(523, t + 0.30, 0.12, 'square', 0.25);
+        });
+
+        // Audio de amigo específico: carga y reproduce el MP3/M4A del amigo que recibió el disparo
+        window.playFriendAudio = (filename) => {
+            const a = new Audio(`assets/audio/${filename}`);
+            a.volume = 0.85;
+            a.play().catch(e => console.warn('playFriendAudio error:', filename, e));
+        };
+
+        // Matrix rain: columnas de caracteres aleatorios cayendo — pantalla de descifrado
+        window.startMatrixRain = () => {
+            const canvas = document.getElementById('matrix-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+
+            const fs = 15;
+            const cols = Math.floor(canvas.width / fs);
+            // Cada columna empieza en posición aleatoria negativa para efecto escalonado
+            const drops = Array.from({ length: cols }, () => Math.random() * -80);
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789@#$%&*<>{}[]';
+
+            const tick = setInterval(() => {
+                ctx.fillStyle = 'rgba(0,0,0,0.055)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+                drops.forEach((y, i) => {
+                    const char = chars[Math.floor(Math.random() * chars.length)];
+                    // Cabeza de la columna es blanca, el resto verde de distintas intensidades
+                    ctx.fillStyle = y < 2 ? '#ccffcc' : Math.random() > 0.08 ? '#00cc00' : '#007700';
+                    ctx.font = `${fs}px monospace`;
+                    ctx.fillText(char, i * fs, y * fs);
+
+                    if (y * fs > canvas.height && Math.random() > 0.974) drops[i] = 0;
+                    drops[i] += 0.55;
+                });
+            }, 33);
+
+            setTimeout(() => clearInterval(tick), 5500);
+        };
+
+        // Victoria: acorde ascendente — C E G C, como un debrief completado
+        window.playWinSound = () => resume(() => {
+            const t = audioContext.currentTime;
+            const notes = [261.63, 329.63, 392.00, 523.25];
+            notes.forEach((freq, i) => {
+                tone(freq, t + i * 0.13, 1.1, 'sine', 0.32);
+            });
+        });
+
+        // Música de fondo — archivo mp3 en loop
+        window._bgAudio = new Audio('assets/sounds/Bg_music.mp3');
+        window._bgAudio.loop = true;
+        window._bgAudio.volume = 0.4;
+
+        window.startBgMusic = () => {
+            window._bgAudio.currentTime = 0;
+            window._bgAudio.play().catch(() => {});
+        };
+
+        window.stopBgMusic = () => {
+            window._bgAudio.pause();
+            window._bgAudio.currentTime = 0;
+        };
+
+        // Explosión JS — independiente del ciclo de render de Blazor
+        window.spawnExplosion = (x, y) => {
+            if (!document.getElementById('exp-styles')) {
+                const s = document.createElement('style');
+                s.id = 'exp-styles';
+                s.textContent = `
+                    @keyframes exp-ring  { 0%{transform:translate(-50%,-50%) scale(.1);opacity:1} 100%{transform:translate(-50%,-50%) scale(7);opacity:0} }
+                    @keyframes exp-core  { 0%{transform:translate(-50%,-50%) scale(.3);opacity:1} 50%{opacity:.9} 100%{transform:translate(-50%,-50%) scale(3.5);opacity:0} }
+                    @keyframes exp-ring2 { 0%{transform:translate(-50%,-50%) scale(.2);opacity:.7} 100%{transform:translate(-50%,-50%) scale(5);opacity:0} }
+                `;
+                document.head.appendChild(s);
+            }
+            const mk = (styles) => {
+                const el = document.createElement('div');
+                el.style.cssText = `position:fixed;left:${x}px;top:${y}px;pointer-events:none;z-index:600;${styles}`;
+                document.body.appendChild(el);
+                return el;
+            };
+            const ring  = mk(`width:180px;height:180px;border-radius:50%;border:5px solid rgba(255,140,0,.95);animation:exp-ring .75s ease-out forwards`);
+            const ring2 = mk(`width:120px;height:120px;border-radius:50%;border:3px solid rgba(255,220,80,.85);animation:exp-ring2 .6s ease-out .04s forwards`);
+            const core  = mk(`width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,#fff 0%,#ffe000 20%,#ff7700 55%,transparent 100%);animation:exp-core .65s ease-out forwards`);
+            setTimeout(() => { ring.remove(); ring2.remove(); core.remove(); }, 700);
+        };
+
+        // Clic de teclado — ruido blanco corto y filtrado, suena como tecla mecánica
+        const typeClick = () => {
+            const t = audioContext.currentTime;
+            const len = Math.floor(audioContext.sampleRate * 0.012);
+            const buf = audioContext.createBuffer(1, len, audioContext.sampleRate);
+            const d = buf.getChannelData(0);
+            for (let i = 0; i < len; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / len);
+            const src = audioContext.createBufferSource();
+            src.buffer = buf;
+            const hp = audioContext.createBiquadFilter();
+            hp.type = 'highpass'; hp.frequency.value = 3200;
+            const g = audioContext.createGain();
+            g.gain.setValueAtTime(0.09, t);
+            g.gain.exponentialRampToValueAtTime(0.001, t + 0.012);
+            src.connect(hp); hp.connect(g); g.connect(audioContext.destination);
+            src.start(t);
+        };
+
+        // Handles activos del efecto máquina de escribir — para poder cancelarlos al cerrar
+        window._twHandles = [];
+
+        // Máquina de escribir — clic cada 3 chars, cursor parpadea al terminar párrafo
+        window.startTypewriterEffect = () => {
+            window._twHandles = [];
+            const paras = document.querySelectorAll('.lightbox-letter .letter-para');
+            let totalDelay = 0;
+            paras.forEach((p) => {
+                const text = p.textContent;
+                p.textContent = '';
+                const startDelay = totalDelay;
+                const typeDuration = text.length * 22;
+                totalDelay += typeDuration + 420;
+
+                const st = setTimeout(() => {
+                    let j = 0;
+                    const iv = setInterval(() => {
+                        j++;
+                        if (j % 3 === 0) resume(typeClick);
+                        p.textContent = text.slice(0, j) + '▌';
+                        if (j >= text.length) {
+                            clearInterval(iv);
+                            let blink = 0;
+                            const biv = setInterval(() => {
+                                blink++;
+                                p.textContent = text + (blink % 2 === 0 ? '▌' : '');
+                                if (blink >= 6) { clearInterval(biv); p.textContent = text; }
+                            }, 280);
+                            window._twHandles.push({ type: 'interval', id: biv });
+                        }
+                    }, 22);
+                    window._twHandles.push({ type: 'interval', id: iv });
+                }, startDelay);
+                window._twHandles.push({ type: 'timeout', id: st });
+            });
+        };
+
+        window.stopTypewriterEffect = () => {
+            window._twHandles.forEach(h => {
+                if (h.type === 'interval') clearInterval(h.id);
+                else clearTimeout(h.id);
+            });
+            window._twHandles = [];
+        };
+
+        // Parallax de fondo — traduce el escenario en dirección opuesta al cursor
+        // para dar sensación de profundidad sin desplazar el HUD ni los objetivos
+        document.addEventListener('mousemove', (e) => {
+            const bg = document.querySelector('.scope-bg');
+            if (!bg) return;
+            const x = (e.clientX / window.innerWidth  - 0.5) * 22;
+            const y = (e.clientY / window.innerHeight - 0.5) * 16;
+            bg.style.transform = `scale(1.07) translate(${-x}px, ${-y}px)`;
+        });
+    </script>
+</body>
+
+</html>

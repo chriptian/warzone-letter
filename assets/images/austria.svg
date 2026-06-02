@@ -1,0 +1,15 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="atGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#ED2939;stop-opacity:1" />
+    <stop offset="33%" style="stop-color:#ED2939;stop-opacity:1" />
+    <stop offset="33%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="66%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="66%" style="stop-color:#ED2939;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#ED2939;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M 465.0,227.8 L 460.6,251.2 L 428.4,251.3 L 439.5,263.7 L 420.4,300.6 L 409.5,310.3 L 359.4,311.7 L 330.4,324.7 L 283.1,320.3 L 201.1,305.5 L 188.3,285.6 L 131.6,295.5 L 124.9,306.4 L 90.2,298.3 L 60.9,296.7 L 35.0,286.3 L 43.8,272.2 L 41.6,262.1 L 58.9,258.9 L 87.9,274.8 L 96.0,259.7 L 146.6,262.1 L 187.6,251.9 L 215.1,253.6 L 233.0,265.4 L 238.3,255.6 L 230.2,218.3 L 250.8,211.0 L 271.0,184.5 L 313.6,203.0 L 345.8,179.5 L 366.0,175.3 L 410.5,192.8 L 437.5,189.8 L 463.9,200.6 L 459.3,207.9 L 465.0,227.8 Z"
+        fill="url(#atGrad)" stroke="#333" stroke-width="2" opacity="0.95"/>
+  <text x="265" y="255" font-size="52" font-weight="bold" text-anchor="middle" fill="#333" opacity="0.6">AT</text>
+</svg>

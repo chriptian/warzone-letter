@@ -1,0 +1,19 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="tzGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" style="stop-color:#1EB53A;stop-opacity:1" />
+    <stop offset="38%" style="stop-color:#1EB53A;stop-opacity:1" />
+    <stop offset="38%" style="stop-color:#FCD116;stop-opacity:1" />
+    <stop offset="44%" style="stop-color:#FCD116;stop-opacity:1" />
+    <stop offset="44%" style="stop-color:#000000;stop-opacity:1" />
+    <stop offset="56%" style="stop-color:#000000;stop-opacity:1" />
+    <stop offset="56%" style="stop-color:#FCD116;stop-opacity:1" />
+    <stop offset="62%" style="stop-color:#FCD116;stop-opacity:1" />
+    <stop offset="62%" style="stop-color:#00A3DD;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#00A3DD;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M 213.8,39.0 L 220.4,43.3 L 362.4,123.1 L 365.1,145.9 L 421.3,185.0 L 403.3,233.3 L 405.6,255.5 L 430.7,269.8 L 431.8,279.9 L 421.1,303.6 L 423.3,315.5 L 420.7,334.2 L 434.4,358.8 L 450.6,397.4 L 465.0,406.0 L 433.8,428.7 L 391.0,443.9 L 367.5,443.3 L 353.5,455.0 L 326.3,456.0 L 316.0,461.0 L 269.0,449.9 L 239.5,453.1 L 228.5,399.8 L 215.2,381.6 L 207.4,370.7 L 169.0,363.4 L 146.7,351.7 L 121.8,345.1 L 106.2,338.5 L 89.8,328.5 L 68.7,279.2 L 46.0,257.2 L 38.1,234.5 L 42.1,214.1 L 35.0,178.1 L 51.2,176.2 L 65.4,162.0 L 80.7,141.6 L 90.3,133.4 L 90.0,120.7 L 81.5,111.8 L 79.3,96.4 L 90.6,91.4 L 92.8,68.4 L 77.3,46.3 L 91.0,41.6 L 134.0,42.1 L 213.8,39.0 Z"
+        fill="url(#tzGrad)" stroke="#333" stroke-width="2" opacity="0.95"/>
+  <text x="231" y="257" font-size="52" font-weight="bold" text-anchor="middle" fill="#FCD116" opacity="0.6">TZ</text>
+</svg>

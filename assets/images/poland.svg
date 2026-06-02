@@ -1,0 +1,13 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="plGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="50%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="50%" style="stop-color:#DC143C;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#DC143C;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M 75.7,286.0 L 58.0,258.4 L 61.4,243.5 L 50.7,220.4 L 35.0,205.0 L 47.0,193.5 L 37.0,171.5 L 66.5,158.8 L 133.9,138.8 L 188.3,124.2 L 231.4,131.5 L 234.6,142.1 L 276.3,142.6 L 329.5,147.5 L 408.9,146.9 L 431.1,151.5 L 441.4,164.8 L 443.3,183.9 L 455.3,200.3 L 455.0,217.5 L 429.1,226.4 L 442.5,246.4 L 443.3,265.6 L 465.0,303.3 L 460.4,315.4 L 438.9,320.4 L 399.7,356.4 L 410.9,375.8 L 401.4,373.3 L 360.4,356.7 L 329.3,362.8 L 308.9,358.3 L 283.4,367.6 L 261.6,352.3 L 243.8,358.1 L 241.4,355.5 L 221.5,334.3 L 189.4,331.7 L 185.3,318.1 L 155.7,313.3 L 149.2,324.5 L 125.8,315.5 L 128.5,303.6 L 96.2,299.9 L 75.7,286.0 Z"
+        fill="url(#plGrad)" stroke="#333" stroke-width="2" opacity="0.95"/>
+  <text x="260" y="261" font-size="52" font-weight="bold" text-anchor="middle" fill="#333" opacity="0.6">PL</text>
+</svg>

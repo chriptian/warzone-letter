@@ -1,0 +1,15 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="nlGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#AE1C28;stop-opacity:1" />
+    <stop offset="33%" style="stop-color:#AE1C28;stop-opacity:1" />
+    <stop offset="33%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="66%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="66%" style="stop-color:#21468B;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#21468B;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M 349.1,95.9 L 443.7,99.1 L 465.0,137.6 L 436.6,241.9 L 407.8,284.7 L 339.4,284.8 L 358.5,404.1 L 295.9,377.5 L 223.9,327.6 L 118.3,351.3 L 35.0,342.4 L 93.7,311.1 L 193.4,143.6 L 349.1,95.9 Z"
+        fill="url(#nlGrad)" stroke="#333" stroke-width="2" opacity="0.95"/>
+  <text x="294" y="250" font-size="52" font-weight="bold" text-anchor="middle" fill="#333" opacity="0.6">NL</text>
+</svg>

@@ -1,0 +1,13 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="doGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" style="stop-color:#002D62;stop-opacity:1" />
+    <stop offset="40%" style="stop-color:#002D62;stop-opacity:1" />
+    <stop offset="40%" style="stop-color:#CE1126;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#CE1126;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M 62.6,134.7 L 77.4,114.5 L 170.0,115.0 L 240.2,145.5 L 271.4,142.6 L 292.9,184.6 L 357.8,182.3 L 354.0,217.6 L 406.7,221.9 L 465.0,265.4 L 421.0,313.6 L 364.6,287.8 L 310.2,292.8 L 271.2,287.2 L 249.8,308.8 L 204.3,316.1 L 186.2,287.3 L 147.0,304.3 L 99.6,385.5 L 69.1,366.7 L 63.1,332.6 L 65.5,300.4 L 35.0,264.8 L 63.9,244.8 L 73.0,199.2 L 62.6,134.7 Z"
+        fill="url(#doGrad)" stroke="#333" stroke-width="2" opacity="0.95"/>
+  <text x="207" y="244" font-size="52" font-weight="bold" text-anchor="middle" fill="#FFFFFF" opacity="0.6">DO</text>
+</svg>

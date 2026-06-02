@@ -1,0 +1,15 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="huGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#CE2939;stop-opacity:1" />
+    <stop offset="33%" style="stop-color:#CE2939;stop-opacity:1" />
+    <stop offset="33%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="66%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="66%" style="stop-color:#477050;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#477050;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M 35.0,272.4 L 56.9,229.9 L 44.1,215.6 L 81.3,215.4 L 86.4,188.4 L 120.0,205.3 L 144.3,212.6 L 199.8,204.5 L 205.1,191.2 L 231.4,189.2 L 263.5,179.0 L 270.7,183.2 L 301.7,175.0 L 317.2,159.4 L 338.9,155.4 L 409.6,175.5 L 423.7,168.7 L 460.4,186.7 L 465.0,204.4 L 424.6,218.2 L 393.4,263.0 L 353.4,307.8 L 300.5,320.3 L 259.2,317.4 L 208.6,334.8 L 183.9,344.6 L 129.3,331.9 L 79.9,303.6 L 59.0,295.5 L 46.1,273.1 L 35.0,272.4 Z"
+        fill="url(#huGrad)" stroke="#333" stroke-width="2" opacity="0.95"/>
+  <text x="223" y="235" font-size="52" font-weight="bold" text-anchor="middle" fill="#333" opacity="0.6">HU</text>
+</svg>

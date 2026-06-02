@@ -1,0 +1,15 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="beGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+    <stop offset="33%" style="stop-color:#000000;stop-opacity:1" />
+    <stop offset="33%" style="stop-color:#FDDA24;stop-opacity:1" />
+    <stop offset="66%" style="stop-color:#FDDA24;stop-opacity:1" />
+    <stop offset="66%" style="stop-color:#EF3340;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#EF3340;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M 129.6,150.4 L 216.0,159.7 L 325.4,135.2 L 400.1,186.8 L 465.0,214.4 L 451.6,294.2 L 420.8,298.6 L 408.0,364.8 L 304.8,311.0 L 244.2,320.2 L 161.8,264.5 L 107.0,217.2 L 52.1,215.2 L 35.0,173.7 L 129.6,150.4 Z"
+        fill="url(#beGrad)" stroke="#333" stroke-width="2" opacity="0.95"/>
+  <text x="257" y="230" font-size="52" font-weight="bold" text-anchor="middle" fill="#FDDA24" opacity="0.6">BE</text>
+</svg>

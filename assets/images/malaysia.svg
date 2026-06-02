@@ -1,0 +1,15 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="myGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#CC0001;stop-opacity:1" />
+    <stop offset="33%" style="stop-color:#CC0001;stop-opacity:1" />
+    <stop offset="33%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="66%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="66%" style="stop-color:#010088;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#010088;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M 439.5,221.6 L 406.3,237.0 L 367.1,229.4 L 315.2,229.4 L 299.5,280.8 L 282.1,296.5 L 259.0,359.3 L 222.1,368.9 L 179.4,356.3 L 157.7,360.2 L 131.4,383.1 L 102.6,379.8 L 73.4,389.0 L 42.5,363.5 L 35.0,333.3 L 68.1,348.8 L 103.0,340.3 L 112.1,302.1 L 131.4,293.6 L 185.5,283.8 L 217.9,248.1 L 240.1,219.5 L 260.7,242.9 L 270.2,227.5 L 291.8,228.9 L 294.4,200.1 L 296.4,177.9 L 331.2,146.4 L 354.0,111.1 L 372.3,111.0 L 395.5,133.8 L 397.6,153.5 L 427.3,166.1 L 465.0,179.7 L 461.8,197.3 L 431.5,199.6 L 439.5,221.6 Z"
+        fill="url(#myGrad)" stroke="#333" stroke-width="2" opacity="0.95"/>
+  <text x="266" y="257" font-size="52" font-weight="bold" text-anchor="middle" fill="#FFFFFF" opacity="0.6">MY</text>
+</svg>

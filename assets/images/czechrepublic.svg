@@ -1,0 +1,13 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="czGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="50%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    <stop offset="50%" style="stop-color:#D7141A;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#D7141A;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M 341.9,330.6 L 311.9,318.3 L 281.4,321.7 L 230.9,301.8 L 208.0,306.7 L 171.5,333.3 L 123.2,312.4 L 86.4,284.4 L 53.3,268.8 L 46.4,241.4 L 35.0,222.0 L 82.3,207.9 L 106.4,191.7 L 153.1,179.1 L 169.4,166.7 L 186.5,174.2 L 215.6,167.4 L 246.4,188.3 L 295.0,194.0 L 290.9,211.9 L 326.3,225.3 L 336.0,208.5 L 380.6,215.8 L 386.7,236.2 L 435.1,240.1 L 465.0,272.1 L 445.6,272.2 L 435.5,283.9 L 420.6,286.7 L 416.4,301.5 L 403.9,304.6 L 402.1,310.7 L 379.9,317.4 L 351.1,316.3 L 341.9,330.6 Z"
+        fill="url(#czGrad)" stroke="#333" stroke-width="2" opacity="0.95"/>
+  <text x="273" y="258" font-size="52" font-weight="bold" text-anchor="middle" fill="#333" opacity="0.6">CZ</text>
+</svg>

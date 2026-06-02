@@ -1,0 +1,15 @@
+<svg viewBox="0 0 500 500" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="deGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+    <stop offset="0%" style="stop-color:#000000;stop-opacity:1" />
+    <stop offset="33%" style="stop-color:#000000;stop-opacity:1" />
+    <stop offset="33%" style="stop-color:#DD0000;stop-opacity:1" />
+    <stop offset="66%" style="stop-color:#DD0000;stop-opacity:1" />
+    <stop offset="66%" style="stop-color:#FFCE00;stop-opacity:1" />
+    <stop offset="100%" style="stop-color:#FFCE00;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M 222.3,67.1 L 223.2,85.5 L 271.3,96.6 L 270.8,113.5 L 319.2,104.6 L 346.0,91.5 L 399.8,110.3 L 422.3,125.5 L 433.4,149.7 L 420.1,162.4 L 437.4,179.4 L 449.2,204.9 L 445.5,221.3 L 465.0,251.7 L 443.7,256.7 L 431.2,251.2 L 419.2,260.3 L 385.0,269.5 L 367.4,281.4 L 332.7,291.7 L 341.1,305.9 L 346.1,326.0 L 370.4,337.4 L 397.3,357.9 L 380.5,379.9 L 363.4,385.9 L 370.2,416.9 L 365.7,425.0 L 350.9,415.3 L 328.0,413.8 L 294.0,422.4 L 252.0,420.3 L 245.2,432.9 L 221.1,419.7 L 206.7,422.3 L 155.7,407.7 L 145.9,418.1 L 105.4,417.8 L 111.4,383.8 L 135.5,351.2 L 66.9,342.4 L 44.4,330.0 L 47.1,309.1 L 37.6,298.3 L 43.0,266.1 L 35.0,216.2 L 63.6,216.2 L 75.7,198.3 L 87.6,154.7 L 78.7,138.6 L 88.0,128.5 L 127.8,125.9 L 136.6,136.4 L 168.9,112.9 L 158.0,95.1 L 155.9,68.1 L 191.9,74.3 L 222.3,67.1 Z"
+        fill="url(#deGrad)" stroke="#333" stroke-width="2" opacity="0.95"/>
+  <text x="256" y="254" font-size="52" font-weight="bold" text-anchor="middle" fill="#FFCE00" opacity="0.6">DE</text>
+</svg>
