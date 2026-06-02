@@ -202,11 +202,13 @@
             window._bgAudio.currentTime = 0;
         };
 
-        // Impacto de bala — posicionado desde % del target para funcionar en desktop y mobile
-        // xPct/yPct son target.X y target.Y+6 (centro aproximado del elemento)
-        window.spawnExplosion = (xPct, yPct) => {
-            const x = window.innerWidth  * xPct / 100;
-            const y = window.innerHeight * yPct / 100;
+        // Impacto de bala — lee getBoundingClientRect del target para coords exactas
+        // en desktop y mobile sin depender de eventos ni porcentajes manuales
+        window.spawnExplosion = (elementId) => {
+            const el = document.getElementById(elementId);
+            const rect = el ? el.getBoundingClientRect() : null;
+            const x = rect ? rect.left + rect.width  / 2 : window.innerWidth  / 2;
+            const y = rect ? rect.top  + rect.height / 2 : window.innerHeight / 2;
 
             if (!document.getElementById('exp-styles')) {
                 const s = document.createElement('style');
@@ -218,10 +220,10 @@
                 document.head.appendChild(s);
             }
             const mk = (styles) => {
-                const el = document.createElement('div');
-                el.style.cssText = `position:fixed;left:${x}px;top:${y}px;pointer-events:none;z-index:600;${styles}`;
-                document.body.appendChild(el);
-                return el;
+                const div = document.createElement('div');
+                div.style.cssText = `position:fixed;left:${x}px;top:${y}px;pointer-events:none;z-index:600;${styles}`;
+                document.body.appendChild(div);
+                return div;
             };
             const ring = mk(`width:70px;height:70px;border-radius:50%;border:2.5px solid rgba(255,150,0,.9);animation:exp-ring .42s ease-out forwards`);
             const core = mk(`width:52px;height:52px;border-radius:50%;background:radial-gradient(circle,#fff 0%,#ffe060 40%,#ff8800 75%,transparent 100%);animation:exp-core .32s ease-out forwards`);
