@@ -994,13 +994,8 @@ main[b-v8q5m4zhkd] {
     /* Altura real sin barra de navegación del browser */
     .game-viewport[b-fxzrr4t9zy] {
         height: 100dvh;
-        height: -webkit-fill-available;
+        min-height: -webkit-fill-available;
         cursor: default;
-        position: fixed;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
     }
 
     /* Sin crosshair — en touch no hay cursor que seguir */
