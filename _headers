@@ -1,0 +1,16 @@
+/_framework/*.wasm
+  Content-Type: application/wasm
+
+/_framework/*.wasm.br
+  Content-Encoding: br
+  Content-Type: application/wasm
+
+/_framework/*.wasm.gz
+  Content-Encoding: gzip
+  Content-Type: application/wasm
+
+/_framework/*.br
+  Content-Encoding: br
+
+/_framework/*.gz
+  Content-Encoding: gzip
