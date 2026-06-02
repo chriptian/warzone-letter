@@ -202,15 +202,18 @@
             window._bgAudio.currentTime = 0;
         };
 
-        // Explosión JS — independiente del ciclo de render de Blazor
-        window.spawnExplosion = (x, y) => {
+        // Impacto de bala — posicionado desde % del target para funcionar en desktop y mobile
+        // xPct/yPct son target.X y target.Y+6 (centro aproximado del elemento)
+        window.spawnExplosion = (xPct, yPct) => {
+            const x = window.innerWidth  * xPct / 100;
+            const y = window.innerHeight * yPct / 100;
+
             if (!document.getElementById('exp-styles')) {
                 const s = document.createElement('style');
                 s.id = 'exp-styles';
                 s.textContent = `
-                    @keyframes exp-ring  { 0%{transform:translate(-50%,-50%) scale(.1);opacity:1} 100%{transform:translate(-50%,-50%) scale(7);opacity:0} }
-                    @keyframes exp-core  { 0%{transform:translate(-50%,-50%) scale(.3);opacity:1} 50%{opacity:.9} 100%{transform:translate(-50%,-50%) scale(3.5);opacity:0} }
-                    @keyframes exp-ring2 { 0%{transform:translate(-50%,-50%) scale(.2);opacity:.7} 100%{transform:translate(-50%,-50%) scale(5);opacity:0} }
+                    @keyframes exp-ring { 0%{transform:translate(-50%,-50%) scale(.2);opacity:1} 100%{transform:translate(-50%,-50%) scale(3.5);opacity:0} }
+                    @keyframes exp-core { 0%{transform:translate(-50%,-50%) scale(.5);opacity:1} 55%{opacity:.8} 100%{transform:translate(-50%,-50%) scale(2);opacity:0} }
                 `;
                 document.head.appendChild(s);
             }
@@ -220,10 +223,9 @@
                 document.body.appendChild(el);
                 return el;
             };
-            const ring  = mk(`width:180px;height:180px;border-radius:50%;border:5px solid rgba(255,140,0,.95);animation:exp-ring .75s ease-out forwards`);
-            const ring2 = mk(`width:120px;height:120px;border-radius:50%;border:3px solid rgba(255,220,80,.85);animation:exp-ring2 .6s ease-out .04s forwards`);
-            const core  = mk(`width:130px;height:130px;border-radius:50%;background:radial-gradient(circle,#fff 0%,#ffe000 20%,#ff7700 55%,transparent 100%);animation:exp-core .65s ease-out forwards`);
-            setTimeout(() => { ring.remove(); ring2.remove(); core.remove(); }, 700);
+            const ring = mk(`width:70px;height:70px;border-radius:50%;border:2.5px solid rgba(255,150,0,.9);animation:exp-ring .42s ease-out forwards`);
+            const core = mk(`width:52px;height:52px;border-radius:50%;background:radial-gradient(circle,#fff 0%,#ffe060 40%,#ff8800 75%,transparent 100%);animation:exp-core .32s ease-out forwards`);
+            setTimeout(() => { ring.remove(); core.remove(); }, 450);
         };
 
         // Clic de teclado — ruido blanco corto y filtrado, suena como tecla mecánica
