@@ -179,7 +179,7 @@ main[b-v8q5m4zhkd] {
 .scope-bg[b-fxzrr4t9zy] {
     position: absolute;
     inset: -7%;
-    background: url('../assets/images/background.jpg') no-repeat center center;
+    background: url('assets/images/background.jpg') no-repeat center center;
     background-size: cover;
     transform: scale(1.07);
     transition: transform 0.09s ease-out;
