@@ -290,6 +290,9 @@
             window._twHandles = [];
         };
 
+        // Detecta si el dispositivo es touch — llamado desde C# para ajustar velocidades
+        window.isTouchDevice = () => window.matchMedia('(pointer: coarse)').matches;
+
         // Parallax de fondo — traduce el escenario en dirección opuesta al cursor
         // para dar sensación de profundidad sin desplazar el HUD ni los objetivos
         document.addEventListener('mousemove', (e) => {

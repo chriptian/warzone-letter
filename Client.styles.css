@@ -1001,57 +1001,77 @@ main[b-v8q5m4zhkd] {
     /* Sin crosshair — en touch no hay cursor que seguir */
     .crosshair[b-fxzrr4t9zy] { display: none; }
 
-    /* Panel izquierdo — más compacto */
-    .left-panel[b-fxzrr4t9zy] { max-width: 160px; }
-    .score-display[b-fxzrr4t9zy] { font-size: 1.25rem; }
-    .mission-text[b-fxzrr4t9zy] { display: none; }
-    .hud-top[b-fxzrr4t9zy] { padding: 0.65rem 0.85rem; }
-    .eliminated-list[b-fxzrr4t9zy] { max-height: 38vh; overflow-y: auto; }
+    /* ── HUD izquierdo: tira compacta top-left, máximo 115px ─────────────────
+       Referencia COD Mobile: score + progreso únicamente, sin lista de kills
+       para liberar el máximo espacio vertical para el campo de batalla.     */
+    .left-panel[b-fxzrr4t9zy] {
+        max-width: 115px;
+        top: 1.5%;
+        left: 2%;
+        gap: 0.2rem;
+    }
+    .hud-top[b-fxzrr4t9zy] {
+        padding: 0.4rem 0.6rem;
+        background: rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+    }
+    .score-display[b-fxzrr4t9zy]  { font-size: 1rem; margin-bottom: 0.15rem; }
+    .mission-text[b-fxzrr4t9zy]   { display: none; }
+    .progress-text[b-fxzrr4t9zy]  { font-size: 0.7rem; margin: 0; }
+    .feedback-text[b-fxzrr4t9zy]  { font-size: 0.68rem; padding: 0.25rem 0.3rem; }
+    /* Lista de países derribados oculta en mobile — ocupa demasiado espacio */
+    .eliminated-list[b-fxzrr4t9zy] { display: none; }
 
-    /* Kill feed — más estrecho y letra más pequeña */
-    .kill-feed[b-fxzrr4t9zy] { width: 170px; }
-    .kill-entry[b-fxzrr4t9zy] { font-size: 0.7rem; padding: 0.3rem 0.6rem; }
+    /* ── Kill feed: tira compacta top-right, máximo 120px ───────────────────
+       Resultado en iPhone 14 (390px): 115px + 120px + 2*2% ≈ 251px de UI,
+       dejando ~139px de zona despejada en el centro para los targets.       */
+    .kill-feed[b-fxzrr4t9zy] {
+        width: 120px;
+        top: 1.5%;
+        right: 2%;
+    }
+    .kill-entry[b-fxzrr4t9zy] { font-size: 0.6rem; padding: 0.2rem 0.45rem; }
 
-    /* Objetivos — más grandes para que sea más fácil tocarlos */
-    .country-item[b-fxzrr4t9zy]  { width: 110px; height: 110px; }
-    .friend-avatar[b-fxzrr4t9zy] { width: 110px; height: 110px; }
-    .country-card[b-fxzrr4t9zy]  { width: 120px; min-height: 120px; }
+    /* Objetivos — tamaño ligeramente reducido vs desktop, hit-area sigue ok */
+    .country-item[b-fxzrr4t9zy]  { width: 100px; height: 100px; }
+    .friend-avatar[b-fxzrr4t9zy] { width: 95px;  height: 95px;  }
+    .country-card[b-fxzrr4t9zy]  { width: 110px; min-height: 110px; }
 
-    /* Flash de foto — centrado abajo en vez de flotando a la derecha */
+    /* Flash de país — centrado en la parte baja, no interfiere con targets */
     .photo-flash-panel[b-fxzrr4t9zy] {
         top: auto;
         bottom: 5%;
         right: 50%;
         transform: translateX(50%);
-        width: 240px;
+        width: 230px;
         animation: flash-mobile-in-b-fxzrr4t9zy 0.35s ease-out forwards;
     }
 
-    /* Pantalla de intro — reducir padding */
-    .intro-box[b-fxzrr4t9zy] { padding: 1.6rem 1.4rem; }
-    .intro-title[b-fxzrr4t9zy] { font-size: 0.95rem; }
-    .intro-body[b-fxzrr4t9zy] { font-size: 0.78rem; }
+    /* Hit text — más compacto */
+    .hit-text[b-fxzrr4t9zy] { font-size: 1.05rem; max-width: 78%; }
 
-    /* Win screen — galería más compacta */
-    .gallery-card[b-fxzrr4t9zy] { width: 100px; }
-    .card-photo-wrap[b-fxzrr4t9zy] { width: 100px; height: 78px; }
-    .win-screen[b-fxzrr4t9zy] { padding: 1.4rem 1.2rem; }
-    .win-title[b-fxzrr4t9zy] { font-size: 1.5rem; }
-
-    /* Lightbox — ocupa más pantalla */
-    .lightbox-box[b-fxzrr4t9zy] { padding: 1.4rem; max-width: 96vw; }
-    .lightbox-img[b-fxzrr4t9zy] { max-height: 55vw; }
-
-    /* Hit text — más pequeño en móvil */
-    .hit-text[b-fxzrr4t9zy] { font-size: 1.2rem; max-width: 80%; }
-
-    /* Friend flash — arriba para no solaparse con el country flash (abajo) */
+    /* Flash de amigo — parte alta, no se solapa con el country flash */
     .friend-flash[b-fxzrr4t9zy] {
         top: 5%;
         bottom: auto;
         transform: translateX(50%);
         animation: flash-mobile-in-b-fxzrr4t9zy 0.35s ease-out forwards;
     }
+
+    /* Pantalla de inicio — padding reducido */
+    .intro-box[b-fxzrr4t9zy]   { padding: 1.6rem 1.4rem; }
+    .intro-title[b-fxzrr4t9zy] { font-size: 0.95rem; }
+    .intro-body[b-fxzrr4t9zy]  { font-size: 0.78rem; }
+
+    /* Win screen — galería más compacta */
+    .gallery-card[b-fxzrr4t9zy]    { width: 100px; }
+    .card-photo-wrap[b-fxzrr4t9zy] { width: 100px; height: 78px; }
+    .win-screen[b-fxzrr4t9zy] { padding: 1.4rem 1.2rem; }
+    .win-title[b-fxzrr4t9zy]  { font-size: 1.5rem; }
+
+    /* Lightbox — usa casi toda la pantalla */
+    .lightbox-box[b-fxzrr4t9zy] { padding: 1.4rem; max-width: 96vw; }
+    .lightbox-img[b-fxzrr4t9zy] { max-height: 55vw; }
 }
 
 @keyframes flash-mobile-in-b-fxzrr4t9zy {
